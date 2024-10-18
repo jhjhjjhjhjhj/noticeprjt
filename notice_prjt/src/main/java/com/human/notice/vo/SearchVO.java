@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class SearchVO {
     private String searchType;
     private String searchKeyword;
-    private String category;
+    private String n_category;
 
-    // Getters and setters
+
 }

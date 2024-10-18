@@ -2,6 +2,8 @@ package com.human.notice.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 
 import com.human.notice.repository.NoticeDAO;
@@ -17,19 +19,20 @@ public class NoticeServiceImpl implements NoticeService {
     private NoticeDAO noticeDAO;
 
     @Override
-    public List<NoticeVO> getNoticeList(SearchVO searchVO) {
-        return noticeDAO.getNoticeList(searchVO);
+    public List<NoticeVO> getNoticeList(SearchVO vo) {
+        return noticeDAO.getNoticeList(vo);
     }
 
     @Override
-    public void insertNotice(NoticeVO noticeVO) {
-        noticeDAO.insertNotice(noticeVO);
+    public void insertNotice(NoticeVO vo, HttpServletRequest request) {
+        noticeDAO.insertNotice(vo);
     }
 
-    @Override
-    public NoticeVO getNotice(int n_idx) {
-        return noticeDAO.getNotice(n_idx);
-    }
+
+	@Override
+	public List<NoticeVO> getNoticeList() {
+		return noticeDAO.getNoticeList();
+	}
 
 
 }

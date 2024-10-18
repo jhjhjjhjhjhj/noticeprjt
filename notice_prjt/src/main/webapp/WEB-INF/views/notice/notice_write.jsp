@@ -1,55 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>공지사항</title>
+<meta charset="UTF-8">
+<title>글등록</title>
 </head>
 <body>
-    <h1>공지사항</h1>
-    
-    <!-- Category tabs -->
-    <div>
-        <a href="?category=all">전체</a>
-        <a href="?category=general">일반</a>
-        <a href="?category=news">오픈소식</a>
-        <a href="?category=service">서비스</a>
-        <a href="?category=winners">당첨자발표</a>
+<div id="wrap">
+    <h2>글등록</h2>
+    <div id="container">
+        <form name="frmBoardWrite" action="writeProcess.do" method="post">
+             카테고리: 
+            <select name="n_category">
+                <option value="general">일반</option>
+                <option value="news">오픈소식</option>
+                <option value="service">서비스</option>
+                <option value="winners">당첨자발표</option>
+            </select><br><br>
+            제목: <input type="text" name="n_title"><br>
+            내용<br>
+            <textarea name="n_content" cols="30" rows="10"></textarea><br>
+            
+            <div>
+                <input type="submit" value="작성완료">
+                <input type="reset" value="다시입력">
+                <input type="button" value="목록보기" onclick="location.href='../notice_list'">
+            </div>
+        </form>
+
     </div>
-    
-    <!-- Search form -->
-    <form action="" method="get">
-        <input type="text" name="searchKeyword" placeholder="검색어를 입력해 주세요">
-        <button type="submit">검색</button>
-    </form>
-    
-    <!-- Notices table -->
-    <table>
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>구분</th>
-                <th>제목</th>
-                <th>등록일</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="notice" items="${notices}">
-                <tr>
-                    <td>${notice.n_idx}</td>
-                    <td>${notice.n_category}</td>
-                    <td><a href="view?id=${notice.n_idx}">${notice.n_title}</a></td>
-                    <td>${notice.n_regdate}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-    
-    <!-- Pagination -->
-    <!-- TODO: Add pagination -->
-    
-    <!-- Add Notice button -->
-    <a href="write">공지사항 등록</a>
+
+</div>
 </body>
 </html>

@@ -22,13 +22,18 @@ public class NoticeDAO {
         return sqlSession.selectList(MAPPER + ".getNoticeList", searchVO);
     }
 
-    public void insertNotice(NoticeVO noticeVO) {
-        sqlSession.insert(MAPPER + ".insertNotice", noticeVO);
+    public void insertNotice(NoticeVO vo) {
+        sqlSession.insert(MAPPER + ".insertNotice", vo);
     }
 
     public NoticeVO getNotice(int n_idx) {
         return sqlSession.selectOne(MAPPER + ".getNotice", n_idx);
     }
+
+	public List<NoticeVO> getNoticeList() {
+		List<NoticeVO> noticeList =  sqlSession.selectList(MAPPER+".getNoticeList");
+		return noticeList;
+	}
 
 
 }
